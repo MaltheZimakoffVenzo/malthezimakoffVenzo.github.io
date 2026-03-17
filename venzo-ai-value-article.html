@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Companies Can't Make AI Value Stick — VENZO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #EDE8E0;
+  --bg-dark: #E5DFD6;
+  --teal: #007B5F;
+  --teal-light: #33957A;
+  --copper: #C4A07C;
+  --light-blue: #B8D8E8;
+  --charcoal: #2D2D2D;
+  --red: #C45B4A;
+  --red-soft: #D4836F;
+  --green: #5BA67B;
+  --muted: #6E6A66;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--charcoal);
+  font-family: 'DM Sans', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.72;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── REVEAL SYSTEM ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.16s; }
+.reveal-d3 { transition-delay: 0.24s; }
+.reveal-d4 { transition-delay: 0.32s; }
+
+/* ── LAYOUT ── */
+.article-wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+@media (max-width: 640px) {
+  .article-wrap { padding: 0 20px; }
+}
+
+/* ── HEADER ── */
+.site-header {
+  padding: 28px 0 24px;
+  border-bottom: 1px solid var(--bg-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 72px;
+}
+.site-logo {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--charcoal);
+}
+.site-logo span { color: var(--copper); }
+.site-header-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--copper);
+  font-weight: 500;
+}
+
+/* ── HERO ── */
+.hero { margin-bottom: 36px; }
+.hero-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--copper);
+  font-weight: 500;
+  margin-bottom: 20px;
+  display: block;
+}
+.hero h1 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(34px, 5vw, 50px);
+  font-weight: 400;
+  line-height: 1.14;
+  color: var(--charcoal);
+  margin-bottom: 22px;
+  max-width: 680px;
+}
+.hero-subtitle {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(18px, 2.5vw, 22px);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--charcoal);
+  opacity: 0.7;
+  max-width: 600px;
+}
+
+/* ── ARTICLE CONTENT ── */
+.article-content { position: relative; }
+
+.section-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--copper);
+  font-weight: 500;
+  margin-bottom: 10px;
+  display: block;
+}
+
+h2 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(26px, 3.5vw, 34px);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--charcoal);
+  margin-bottom: 12px;
+}
+
+h3 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(21px, 2.8vw, 26px);
+  font-weight: 400;
+  line-height: 1.28;
+  color: var(--charcoal);
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 22px;
+  color: var(--charcoal);
+  opacity: 0.92;
+}
+
+.section-block {
+  margin-bottom: 64px;
+}
+
+.section-block-lg {
+  margin-bottom: 88px;
+}
+
+/* ── PULL QUOTES ── */
+.pull-quote {
+  border-left: 3px solid var(--teal);
+  padding: 6px 0 6px 28px;
+  margin: 42px 0 42px 0;
+  max-width: 620px;
+}
+.pull-quote p {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 21px;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--charcoal);
+  opacity: 0.75;
+  margin-bottom: 0;
+}
+.anim-container {
+  background: var(--bg);
+  border: 1px solid var(--bg-dark);
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 36px 0 40px;
+  position: relative;
+}
+.anim-container svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ── CONDITION HEADERS ── */
+.condition-header {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+.condition-num {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--copper);
+  flex-shrink: 0;
+}
+.condition-tagline {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(18px, 2.5vw, 23px);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--charcoal);
+  opacity: 0.65;
+  margin-bottom: 14px;
+}
+.editorial-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0 36px;
+  font-size: 15px;
+}
+.editorial-table thead th {
+  text-align: left;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--copper);
+  font-weight: 600;
+  padding: 10px 16px 10px 0;
+  border-bottom: 2px solid var(--bg-dark);
+  vertical-align: top;
+}
+.editorial-table tbody td {
+  padding: 14px 16px 14px 0;
+  border-bottom: 1px solid var(--bg-dark);
+  vertical-align: top;
+  color: var(--charcoal);
+  opacity: 0.9;
+  line-height: 1.55;
+}
+.editorial-table tbody tr:last-child td { border-bottom: none; }
+.editorial-table .friction-label {
+  font-weight: 600;
+  white-space: nowrap;
+}
+.friction-low { color: var(--teal); }
+.friction-med { color: var(--copper); }
+.friction-high { color: var(--red); }
+
+/* ── DIVIDERS ── */
+/* ── DIVIDERS: WOVEN THREADS ── */
+.section-divider {
+  position: relative;
+  height: 40px;
+  margin: 44px 0;
+  overflow: hidden;
+}
+.section-divider svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+/* ── CITATION ── */
+.citation-section {
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid var(--bg-dark);
+}
+.citation-section h3 {
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+.citation-list {
+  list-style: none;
+  padding: 0;
+}
+.citation-list li {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--charcoal);
+  opacity: 0.7;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+.citation-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--copper);
+  opacity: 0.5;
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  margin-top: 80px;
+  padding: 40px 0 60px;
+  border-top: 1px solid var(--bg-dark);
+  text-align: center;
+}
+.site-footer .site-logo { font-size: 20px; margin-bottom: 8px; }
+.site-footer p {
+  font-size: 13px;
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+/* ── ANIM TOGGLE BUTTONS ── */
+.anim-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border: 1px solid var(--copper);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--copper);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+  margin-top: 10px;
+}
+.anim-toggle:hover {
+  background: var(--copper);
+  color: #fff;
+}
+
+/* ── SVG TEXT DEFAULTS ── */
+svg text {
+  font-family: 'DM Sans', sans-serif;
+}
+</style>
+</head>
+<body>
+
+<!-- Floating geometric shapes -->
+
+<div class="article-wrap">
+
+  <!-- HEADER (spacer only) -->
+  <div style="height: 48px;"></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="hero-label reveal">AI Implementation</span>
+    <h1 class="reveal reveal-d1">Why Companies Can't Make AI Value Stick</h1>
+    <p class="hero-subtitle reveal reveal-d2">And how the organizations that win are redesigning work instead of automating it.</p>
+  </section>
+
+  <div class="article-content">
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- SECTION: THE PRODUCTIVITY PARADOX       -->
+    <!-- ═══════════════════════════════════════ -->
+    <section class="section-block-lg">
+      <span class="section-label reveal">The Productivity Paradox Is Not New</span>
+
+      <p class="reveal reveal-d2">When modern companies today struggle with getting value out of their AI investments, it is not a novel or a new problem. In 1987, the economist Robert Solow noticed something strange. America had spent billions on computers. Yet none of it was showing up in economic growth.</p>
+
+      <p class="reveal">When factories first electrified in the 1880s, they swapped in electric motors and left everything else the same. For forty years, the productivity data barely moved at all. The gains only appeared when a new generation of owners redesigned the factory itself: open floor plans, assembly lines, new roles, new skills. The result was not a more efficient version of the old factory. It was a different kind of factory entirely.</p>
+
+      <!-- ══ ANIMATION 1: FACTORY TRANSFORMATION ══ -->
+      <div class="anim-container reveal" id="anim-factory">
+        <svg viewBox="0 0 780 400" id="factory-svg">
+          <rect width="780" height="400" fill="var(--bg)"/>
+
+          <!-- Right-side annotation area -->
+          <g id="f-annotation" opacity="0">
+            <text id="f-anno-label" x="560" y="60" text-anchor="middle" font-size="11" fill="var(--charcoal)" opacity="0.65" letter-spacing="0.1em" font-weight="500"></text>
+            <text id="f-anno-line1" x="560" y="88" text-anchor="middle" font-size="14" font-weight="500" fill="var(--charcoal)"></text>
+            <text id="f-anno-line2" x="560" y="110" text-anchor="middle" font-size="12" fill="var(--muted)"></text>
+            <text id="f-anno-line3" x="560" y="155" text-anchor="middle" font-size="13" font-weight="600" fill="var(--red)" opacity="0.85"></text>
+          </g>
+
+          <!-- Network: edges then nodes (JS will create 12 circles + edges) -->
+          <g id="f-edges"></g>
+          <g id="f-nodes"></g>
+          <g id="f-particles"></g>
+
+          <!-- ── TIMELINE (bottom) ── -->
+          <g id="f-timeline" opacity="0">
+            <!-- Track -->
+            <line x1="60" y1="330" x2="720" y2="330" stroke="var(--charcoal)" stroke-width="1" opacity="0.12"/>
+
+            <!-- Epoch markers -->
+            <g id="f-epoch-1" opacity="0.45">
+              <circle cx="100" cy="330" r="4" fill="var(--copper)" opacity="0.6"/>
+              <text x="100" y="355" text-anchor="middle" font-size="10" fill="var(--charcoal)" opacity="0.85" font-weight="500">1880s</text>
+              <text x="100" y="370" text-anchor="middle" font-size="9" fill="var(--muted)">Electricity arrives</text>
+            </g>
+
+            <g id="f-epoch-2" opacity="0.45">
+              <circle cx="340" cy="330" r="4" fill="var(--copper)" opacity="0.6"/>
+              <text x="340" y="355" text-anchor="middle" font-size="10" fill="var(--charcoal)" opacity="0.85" font-weight="500">40 years</text>
+              <text x="340" y="370" text-anchor="middle" font-size="9" fill="var(--muted)">Same workflows, no gains</text>
+            </g>
+
+            <g id="f-epoch-3" opacity="0.45">
+              <circle cx="600" cy="330" r="5" fill="var(--teal)" opacity="0.8"/>
+              <text x="600" y="355" text-anchor="middle" font-size="10" fill="var(--teal)" opacity="0.9" font-weight="600">Redesign</text>
+              <text x="600" y="370" text-anchor="middle" font-size="9" fill="var(--teal)" opacity="0.7">New factory, new roles</text>
+            </g>
+
+            <!-- Progress bar (fills left to right) -->
+            <line id="f-progress" x1="60" y1="330" x2="60" y2="330" stroke="var(--copper)" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+
+            <!-- Moving cursor -->
+            <circle id="f-cursor" cx="60" cy="330" r="7" fill="var(--bg)" stroke="var(--copper)" stroke-width="2" opacity="0"/>
+          </g>
+
+          <!-- Bottom insight -->
+          <text id="f-insight" x="390" y="395" text-anchor="middle" font-size="10" fill="var(--charcoal)" opacity="0" font-style="italic">Same pattern, same mistake, same opportunity</text>
+
+          <!-- Replay -->
+          <g id="factory-replay" opacity="0" style="cursor:pointer;">
+            <rect x="340" y="290" width="100" height="26" rx="4" fill="none" stroke="var(--copper)" stroke-width="1" opacity="0.6"/>
+            <text x="390" y="307" text-anchor="middle" font-size="10" fill="var(--copper)" letter-spacing="0.04em">REPLAY</text>
+          </g>
+        </svg>
+      </div>
+
+      <p class="reveal">AI is in the steam-engine-swap phase right now, except the cycle that took electricity forty years is compressing into years, or even months. In early 2026, a survey of thousands of CEOs found no measurable AI impact on productivity. The largest enterprise Copilot evaluation to date (20,000 employees, three months) reported significant user-reported time savings, but the report itself admitted it could not identify how that saved time was actually spent.</p>
+
+      <p class="reveal">Lab studies and controlled pilots do show real gains, and sometimes dramatic ones. The question is not whether AI can make individuals faster. It is why those gains evaporate on the way to a business outcome.</p>
+
+      <p class="reveal">Checking whether the tool is being actively used, often defined as one interaction per month, tells an organization nothing about whether work has actually changed or where freed capacity ended up. The value disappears in the spaces between roles, not within them.</p>
+
+      <div class="pull-quote reveal">
+        <p>As with electricity, capturing the value requires building new organizational capabilities.</p>
+      </div>
+
+      <p class="reveal">That starts with redesigning work end-to-end: from what AI automates, through the behavioral change each role needs to make, to the new behaviors required for freed capacity to land somewhere valuable. If any link in that chain is undesigned, value leaks out.</p>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- SECTION DIVIDER                         -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="section-divider reveal" aria-hidden="true">
+      <svg viewBox="0 0 780 40" class="woven-divider"></svg>
+    </div>
+    <section class="section-block-lg">
+      <span class="section-label reveal">Three Conditions</span>
+      <h2 class="reveal reveal-d1">Three conditions that AI value has to pass through</h2>
+
+      <p class="reveal">Across AI programs, the same three behavioral conditions separate organizations that create real value from those that do not. The AI must improve the process. People must adopt new ways of working in a meaningful way. And the gains must land somewhere strategically valuable rather than dissipate.</p>
+
+      <p class="reveal">But there is good news. AI generates interaction data that can reveal how work is happening on a user level. Not self-reported or surveyed. Turning this data into a diagnostic requires investment, but the behavioral signal has never been more insightful and granular.</p>
+
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- CONDITION ONE                            -->
+    <!-- ═══════════════════════════════════════ -->
+    <section class="section-block-lg">
+      <div class="condition-header reveal">
+        <span class="condition-num">CONDITION 01</span>
+      </div>
+      <p class="condition-tagline reveal reveal-d1">Are you automating the right work?</p>
+      <h3 class="reveal reveal-d2">The AI must improve the process</h3>
+
+      <p class="reveal">Before asking whether the AI output is good enough, there is a prior question: is this the right problem to be automating? A lot of AI deployments target tasks that are easy to automate rather than tasks whose automation would produce the most value. A team might get excellent AI-assisted meeting summaries, but if meeting summaries were never a bottleneck for that team's value delivery, the automation is irrelevant regardless of quality. The first job is to verify that the use case is connected to the capability the team exists to deliver.</p>
+
+      <p class="reveal">Once that is established, the technology has to produce output that people in a specific role can actually build on. Not "does AI work in general" but "does it produce reliable output for this specific workflow?" That is a workflow-level question, and the answer can differ sharply across teams using the same tool.</p>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- CONDITION TWO                            -->
+    <!-- ═══════════════════════════════════════ -->
+    <section class="section-block-lg">
+      <div class="condition-header reveal">
+        <span class="condition-num">CONDITION 02</span>
+      </div>
+      <p class="condition-tagline reveal reveal-d1">Your highest-skilled people are your lowest adopters</p>
+      <h3 class="reveal reveal-d2">People must adopt new ways of working</h3>
+
+      <p class="reveal">Here is where things come apart.</p>
+
+      <p class="reveal">Picture a developer who has GitHub Copilot. They use it for autocomplete suggestions. The dashboard counts them as adopted. But they are still writing code the same way they did two years ago. They have not changed their process. They have added a feature to it.</p>
+
+      <p class="reveal">Deeper adoption looks different. It means starting from the AI draft instead of a blank document. Trusting AI output enough to build on it rather than redo it. As AI moves toward agentic systems, it means something harder still: stepping out of the loop entirely, delegating to something you cannot supervise in real time.</p>
+
+      <p class="reveal">Sometimes the barrier is workflow friction. The old way is easier, and the AI path requires extra steps. Without deliberate design making the new way the default, people stick with what they know.</p>
+
+      <p class="reveal">The people best positioned to validate AI output, the senior practitioners, the domain experts, the people with fifteen years of experience, are consistently the lowest adopters. The resistance makes sense. A senior analyst watching AI generate a financial model in seconds is watching the market value of their core skill collapse in real time. Research on social threat (Rock, 2008) explains why AI hits harder than previous technologies: it can simultaneously threaten how people feel about their status, certainty, autonomy, relatedness, and fairness. Most technology changes trigger one of these. AI can trigger all five at once.</p>
+
+      <!-- ══ SCARF THREAT RADAR ══ -->
+      <div class="anim-container reveal" id="anim-scarf">
+        <svg viewBox="0 0 780 400" id="scarf-svg">
+          <rect width="780" height="400" fill="var(--bg)"/>
+          <text x="390" y="28" text-anchor="middle" font-size="10" fill="var(--charcoal)" opacity="0.7" letter-spacing="0.1em" font-weight="500">WHY AI RESISTANCE IS DIFFERENT</text>
+
+          <!-- Legend -->
+          <g id="scarf-legend" opacity="0">
+            <rect x="200" y="42" width="12" height="12" rx="2" fill="var(--copper)" opacity="0.6"/>
+            <text x="218" y="53" font-size="10" fill="var(--charcoal)" opacity="0.7" font-weight="500">Typical technology change</text>
+            <rect x="430" y="42" width="12" height="12" rx="2" fill="var(--red)" opacity="0.6"/>
+            <text x="448" y="53" font-size="10" fill="var(--charcoal)" opacity="0.7" font-weight="500">AI</text>
+          </g>
+
+          <!-- Rows built by JS -->
+          <g id="scarf-rows"></g>
+
+          <!-- Insight -->
+          <text id="scarf-insight" x="390" y="385" text-anchor="middle" font-size="11" fill="var(--charcoal)" opacity="0" font-style="italic">Most technology changes trigger one dimension. AI triggers all five at once.</text>
+        </svg>
+      </div>
+
+      <p class="reveal">Most organizations treat the identity threat as a problem to manage. Research on organizational change suggests the opposite: treat it as intelligence. Help people see where their value is going, not where it is disappearing. That senior analyst's new value is knowing whether the model is right, what it means for the business, and what to do about it. Zuboff (1988) studied this exact transition in earlier waves of automation: organizations that invested in building the judgment capability produced more valuable workers. Those that just automated and expected people to figure it out produced worse ones.</p>
+
+      <p class="reveal">You cannot make someone a good reviewer by telling them to review. Being excellent at building a financial model does not prepare someone for critically evaluating one. The judgment skill must be practiced, not explained. That means structured sessions where practitioners evaluate AI-generated work alongside their own, in settings where getting it wrong is safe. Pilot projects where people try the new role before it becomes a mandate (Ibarra, 1999). Not training programs that describe what the new role should look like.</p>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- CONDITION THREE                          -->
+    <!-- ═══════════════════════════════════════ -->
+    <section class="section-block-lg">
+      <div class="condition-header reveal">
+        <span class="condition-num">CONDITION 03</span>
+      </div>
+      <p class="condition-tagline reveal reveal-d1">The forty minutes nobody can account for</p>
+      <h3 class="reveal reveal-d2">The gains must land somewhere strategically valuable</h3>
+
+      <!-- ══ ANIMATION 4: TUESDAY AFTERNOON ══ -->
+      <div class="anim-container reveal" id="anim-tuesday">
+        <svg viewBox="0 0 780 290" id="tuesday-svg">
+          <rect width="780" height="290" fill="var(--bg)"/>
+
+          <text x="390" y="26" text-anchor="middle" font-size="10" fill="var(--charcoal)" opacity="0.7" letter-spacing="0.1em" font-weight="500">TUESDAY AFTERNOON</text>
+
+          <!-- Time axis -->
+          <line x1="40" y1="80" x2="740" y2="80" stroke="var(--charcoal)" stroke-width="1" opacity="0.1"/>
+
+          <!-- Hour ticks -->
+          <line x1="40" y1="76" x2="40" y2="84" stroke="var(--charcoal)" stroke-width="1" opacity="0.15"/>
+          <text x="40" y="70" text-anchor="middle" font-size="11" fill="var(--charcoal)" opacity="0.65" font-weight="500">1:00</text>
+
+          <line x1="180" y1="76" x2="180" y2="84" stroke="var(--charcoal)" stroke-width="1" opacity="0.15"/>
+          <text x="180" y="70" text-anchor="middle" font-size="11" fill="var(--charcoal)" opacity="0.65" font-weight="500">1:30</text>
+
+          <line x1="320" y1="76" x2="320" y2="84" stroke="var(--charcoal)" stroke-width="1" opacity="0.15"/>
+          <text x="320" y="70" text-anchor="middle" font-size="11" fill="var(--charcoal)" opacity="0.65" font-weight="500">2:00</text>
+
+          <line x1="460" y1="76" x2="460" y2="84" stroke="var(--charcoal)" stroke-width="1" opacity="0.15"/>
+          <text x="460" y="70" text-anchor="middle" font-size="11" fill="var(--charcoal)" opacity="0.65" font-weight="500">2:30</text>
+
+          <line x1="600" y1="76" x2="600" y2="84" stroke="var(--charcoal)" stroke-width="1" opacity="0.15"/>
+          <text x="600" y="70" text-anchor="middle" font-size="11" fill="var(--charcoal)" opacity="0.65" font-weight="500">3:00</text>
+
+          <line x1="740" y1="76" x2="740" y2="84" stroke="var(--charcoal)" stroke-width="1" opacity="0.15"/>
+          <text x="740" y="70" text-anchor="middle" font-size="11" fill="var(--charcoal)" opacity="0.65" font-weight="500">3:30</text>
+
+          <!-- Row label -->
+          <text x="390" y="100" text-anchor="middle" font-size="10" fill="var(--muted)">Marketing Analyst</text>
+
+          <!-- Phase 1: Old task block 1:00–2:00 -->
+          <rect id="t-old-task" x="40" y="110" width="280" height="55" rx="6" fill="var(--copper)" opacity="0.2" stroke="var(--copper)" stroke-width="1.5"/>
+          <text id="t-old-label" x="180" y="137" text-anchor="middle" font-size="12" fill="var(--charcoal)" opacity="0.75" font-weight="500">Campaign performance report</text>
+          <text id="t-old-time" x="180" y="155" text-anchor="middle" font-size="10" fill="var(--muted)">Manual: 60 min</text>
+
+          <!-- Phase 2: AI task 1:00–1:20 -->
+          <rect id="t-ai-task" x="40" y="110" width="93" height="55" rx="6" fill="var(--teal)" opacity="0" stroke="var(--teal)" stroke-width="1.5"/>
+          <text id="t-ai-label" x="86" y="137" text-anchor="middle" font-size="10" fill="#fff" font-weight="500" opacity="0">Campaign report</text>
+          <text id="t-ai-badge" x="86" y="153" text-anchor="middle" font-size="9" fill="#fff" opacity="0">AI: 20 min</text>
+
+          <!-- Phase 2: The Gap 1:20–2:00 -->
+          <rect id="t-gap" x="138" y="110" width="182" height="55" rx="6" fill="none" stroke="var(--copper)" stroke-width="2" stroke-dasharray="8 5" opacity="0"/>
+          <text id="t-gap-label" x="229" y="142" text-anchor="middle" font-size="14" fill="var(--copper)" font-weight="600" opacity="0">40 min freed</text>
+
+          <!-- Phase 3: Drift -->
+          <g id="t-drift" opacity="0">
+            <rect x="142" y="114" width="70" height="22" rx="3" fill="var(--copper)" opacity="0.12"/>
+            <text x="148" y="129" font-size="9" fill="var(--muted)" font-weight="500">Email</text>
+
+            <rect x="218" y="114" width="50" height="22" rx="3" fill="var(--copper)" opacity="0.1"/>
+            <text x="224" y="129" font-size="9" fill="var(--muted)" font-weight="500">Teams</text>
+
+            <rect x="142" y="140" width="95" height="22" rx="3" fill="var(--copper)" opacity="0.08"/>
+            <text x="148" y="155" font-size="9" fill="var(--muted)" font-weight="500">Optional standup</text>
+
+            <rect x="245" y="140" width="68" height="22" rx="3" fill="var(--copper)" opacity="0.06"/>
+            <text x="251" y="155" font-size="8" fill="var(--muted)" font-weight="500">Old analysis</text>
+          </g>
+
+          <!-- Phase 3 alt: Designed -->
+          <g id="t-designed" opacity="0">
+            <rect x="138" y="110" width="182" height="55" rx="6" fill="var(--teal)" opacity="0.4"/>
+            <text x="229" y="137" text-anchor="middle" font-size="11" fill="#fff" font-weight="600">Competitor positioning analysis</text>
+            <text x="229" y="155" text-anchor="middle" font-size="10" fill="#fff" opacity="0.85">Pre-designed</text>
+          </g>
+
+          <!-- Other scheduled work -->
+          <rect x="320" y="110" width="280" height="55" rx="6" fill="var(--bg-dark)" opacity="0.5"/>
+          <text x="460" y="137" text-anchor="middle" font-size="12" fill="var(--charcoal)" opacity="0.7" font-weight="500">Client presentation prep</text>
+          <text x="460" y="155" text-anchor="middle" font-size="10" fill="var(--muted)">2:00–3:00</text>
+
+          <rect x="600" y="110" width="140" height="55" rx="6" fill="var(--bg-dark)" opacity="0.35"/>
+          <text x="670" y="137" text-anchor="middle" font-size="11" fill="var(--charcoal)" opacity="0.65" font-weight="500">Team sync</text>
+          <text x="670" y="155" text-anchor="middle" font-size="10" fill="var(--muted)">3:00–3:30</text>
+
+          <!-- Insight -->
+          <text id="t-insight" x="390" y="210" text-anchor="middle" font-size="11" fill="var(--charcoal)" opacity="0" font-style="italic"></text>
+
+          <!-- Toggle -->
+          <g id="t-toggle" opacity="0" style="cursor:pointer;">
+            <rect x="325" y="230" width="130" height="28" rx="4" fill="none" stroke="var(--copper)" stroke-width="1" opacity="0.6"/>
+            <text id="t-toggle-text" x="390" y="248" text-anchor="middle" font-size="11" fill="var(--copper)" letter-spacing="0.04em">WITH DESIGN →</text>
+          </g>
+        </svg>
+      </div>
+
+      <p class="reveal">It's a Tuesday afternoon. A marketing analyst finishes a campaign report in twenty minutes instead of the usual hour. She looks at her calendar. Nothing is designed to happen next. So, she checks email, responds to a few messages, joins a meeting that could have been a Teams message. By five o'clock, the freed forty minutes have vanished.</p>
+
+      <p class="reveal">This is not because people lack the discipline. It is a failure of design. When technology removes a task from someone's day, it removes the prompt for one behavior without supplying a prompt for the next.</p>
+
+      <p class="reveal">This gap gets filled twofold:</p>
+
+      <p class="reveal">First there is Jevons Paradox: when something becomes more efficient, people consume more of it. AI drafts emails in seconds, so people send more emails, which generates more emails for everyone else to respond to. AI makes it easy to run analyses, so teams produce more analyses without improving a single decision. AI generates presentations faster, so more decks get created, which means more meetings to present them and more people pulled in to review them. The efficiency gain becomes volume increase.</p>
+
+      <p class="reveal">The second is Parkinson's Law: work expands to fill the time available. AI generates a first draft in minutes. Instead of shipping it, the person spends an hour refining because the time exists. The draft was good enough. The extra polish adds nothing the recipient will notice. AI produces an analysis in seconds. Instead of making the decision, the team requests three more scenarios because they're now cheap to produce. The task that was supposed to take an hour still takes an hour.</p>
+
+      <p class="reveal">Both consume the freed capacity without producing actual business value. And both are preventable, but only through deliberate design. Without a pre-designed answer to "what do I do now?", people will either produce more of what they already know how to produce, or default into whatever is familiar. How hard it is to fill that vacuum depends on the distance between the old task and the desired new one. And on any given team, that distance is different for every role.</p>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- SECTION DIVIDER                         -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="section-divider reveal" aria-hidden="true">
+      <svg viewBox="0 0 780 40" class="woven-divider"></svg>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- FRICTION MAP                             -->
+    <!-- ═══════════════════════════════════════ -->
+    <section class="section-block-lg">
+      <span class="section-label reveal">The Friction Map</span>
+      <h2 class="reveal reveal-d1">Why the Same AI Deployment Creates Three Different Problems</h2>
+
+      <!-- ══ ANIMATION 5: FRICTION SPECTRUM ══ -->
+      <div class="anim-container reveal" id="anim-friction">
+        <svg viewBox="0 0 780 370" id="friction-svg">
+          <rect width="780" height="370" fill="var(--bg)"/>
+          <text x="35" y="24" font-size="10" fill="var(--charcoal)" opacity="0.7" letter-spacing="0.1em" font-weight="500">REALLOCATION FRICTION SPECTRUM</text>
+
+          <!-- Column markers -->
+          <g opacity="0" id="friction-columns">
+            <text x="300" y="50" font-size="10" fill="var(--teal)" text-anchor="middle" font-weight="600">Automated task</text>
+            <text x="720" y="50" font-size="10" fill="var(--charcoal)" opacity="0.7" text-anchor="middle" font-weight="500">Reallocation destination</text>
+          </g>
+
+          <!-- LOW FRICTION ROW -->
+          <g id="friction-low" opacity="0">
+            <rect x="20" y="60" width="740" height="88" rx="6" fill="var(--teal)" opacity="0.05"/>
+            <text x="35" y="84" font-size="15" font-weight="700" fill="var(--charcoal)">Low Friction</text>
+            <text x="35" y="102" font-size="11" fill="var(--teal)" font-weight="500">Same mode, same tools</text>
+            <text x="35" y="120" font-size="10" fill="var(--charcoal)" opacity="0.65">Tests → test architecture</text>
+            <circle cx="300" cy="95" r="5" fill="var(--teal)" opacity="0.6"/>
+            <path id="friction-path-low" d="M300,95 Q420,88 540,95 Q640,102 720,95" fill="none" stroke="var(--teal)" stroke-width="2.5" opacity="0.5" stroke-dasharray="500" stroke-dashoffset="500"/>
+            <rect x="714" y="89" width="12" height="12" rx="2" fill="var(--teal)" opacity="0.5"/>
+            <!-- Endpoint annotation -->
+            <text id="friction-anno-low" x="35" y="140" font-size="10" fill="var(--teal)" opacity="0" font-weight="500">What it takes: If-then plans at task completion</text>
+          </g>
+
+          <!-- MED FRICTION ROW -->
+          <g id="friction-med" opacity="0">
+            <rect x="20" y="158" width="740" height="88" rx="6" fill="var(--copper)" opacity="0.05"/>
+            <text x="35" y="182" font-size="15" font-weight="700" fill="var(--charcoal)">Medium Friction</text>
+            <text x="35" y="200" font-size="11" fill="var(--copper)" font-weight="500">Same domain, different workflow</text>
+            <text x="35" y="218" font-size="10" fill="var(--charcoal)" opacity="0.65">Tests → tech debt backlog</text>
+            <circle cx="300" cy="193" r="5" fill="var(--teal)" opacity="0.6"/>
+            <path id="friction-path-med" d="M300,193 Q340,170 385,198 Q430,226 475,180 Q520,152 570,202 Q620,226 670,184 Q700,170 720,193" fill="none" stroke="var(--copper)" stroke-width="2.5" opacity="0.5" stroke-dasharray="600" stroke-dashoffset="600"/>
+            <rect x="714" y="187" width="12" height="12" rx="2" fill="var(--copper)" opacity="0.5"/>
+            <!-- Endpoint annotation -->
+            <text id="friction-anno-med" x="35" y="238" font-size="10" fill="var(--copper)" opacity="0" font-weight="500">What it takes: Scaffolding — backlogs, team agreements, check-ins</text>
+          </g>
+
+          <!-- HIGH FRICTION ROW -->
+          <g id="friction-high" opacity="0">
+            <rect x="20" y="256" width="740" height="88" rx="6" fill="var(--red)" opacity="0.05"/>
+            <text x="35" y="280" font-size="15" font-weight="700" fill="var(--charcoal)">High Friction</text>
+            <text x="35" y="298" font-size="11" fill="var(--red)" font-weight="500">Different mode, skills, identity</text>
+            <text x="35" y="316" font-size="10" fill="var(--charcoal)" opacity="0.65">Tests → client relationships</text>
+            <circle cx="300" cy="291" r="5" fill="var(--teal)" opacity="0.6"/>
+            <path id="friction-path-high" d="M300,291 Q320,265 345,300 Q365,330 390,278 Q410,250 435,306 Q455,332 480,278 Q500,250 525,298 Q545,325 570,280 Q590,260 615,295 Q635,320 660,282 Q680,265 705,292 Q715,288 720,291" fill="none" stroke="var(--red)" stroke-width="2.5" opacity="0.5" stroke-dasharray="700" stroke-dashoffset="700"/>
+            <rect x="712" y="283" width="16" height="16" rx="2" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.4"/>
+            <!-- Endpoint annotation -->
+            <text id="friction-anno-high" x="35" y="336" font-size="10" fill="var(--red)" opacity="0" font-weight="500">What it takes: Structural redesign — new roles, new metrics, identity work</text>
+          </g>
+
+          <!-- Particles added by JS -->
+          <g id="friction-particles"></g>
+
+          <text x="35" y="362" font-size="11" fill="var(--charcoal)" opacity="0.6" font-style="italic">The more strategically valuable the destination, the higher the friction.</text>
+        </svg>
+      </div>
+
+      <p class="reveal">A single AI deployment on a single team creates all three friction levels at once. The junior developer's transition from routine coding to AI-assisted coding might be low friction. The mid-level developer's transition from writing to reviewing AI output is medium friction, requiring a cognitive architecture they may never have practiced. The senior architect's transition from production to pure judgment and system design is high friction, with real identity-level resistance.</p>
+
+      <p class="reveal">The more strategically valuable the destination, the higher the friction. The high-value transitions almost never happen through nudges alone. And when dozens of use cases across the organization all name "innovation" or "strategic work" as the destination, the destination itself becomes the bottleneck. Reallocation targets have finite absorptive capacity.</p>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- QUEUE BOTTLENECK                         -->
+    <!-- ═══════════════════════════════════════ -->
+    <section class="section-block-lg">
+      <span class="section-label reveal">System-Level Thinking</span>
+      <h3 class="reveal reveal-d1">Value disappears between roles</h3>
+
+      <p class="reveal">But even well-designed reallocation at the individual level misses the bigger picture. Value disappears between roles. When AI makes one role 30% faster and the downstream role cannot absorb the increased volume, the gain becomes a queue somewhere else.</p>
+
+      <p class="reveal">When organizations look at the team as a system, something else becomes visible. Not just where value evaporates, but what new configurations become possible. Maybe junior developers absorb review tasks that senior architects used to handle, tasks they can manage now because AI assists their judgment. This frees the architects for system design work that was never possible before, because they were permanently buried in review queues. The value is not in any individual's freed hours. It is in the new configuration of the team, one that produces capabilities the organization did not have before.</p>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- READING RESISTANCE                       -->
+    <!-- ═══════════════════════════════════════ -->
+    <section class="section-block-lg">
+      <span class="section-label reveal">A Diagnostic</span>
+      <h3 class="reveal reveal-d1">Reading resistance</h3>
+
+      <p class="reveal">When people resist AI adoption, the question is not how to increase compliance. It is what the resistance is telling you. Getting the diagnosis wrong wastes the scarcest resource in any AI program: people's willingness to try again.</p>
+
+      <table class="editorial-table reveal">
+        <thead>
+          <tr>
+            <th style="width:25%">Condition</th>
+            <th style="width:35%">What resistance looks like</th>
+            <th style="width:40%">What it actually means</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="reveal">
+            <td class="friction-label" style="color:var(--teal)">1. Process</td>
+            <td>People try the tool, then stop. Feedback centers on output quality. Workarounds appear.</td>
+            <td>The technology is not good enough for this workflow. Or people lack the AI literacy to get good output from it.</td>
+          </tr>
+          <tr class="reveal">
+            <td class="friction-label" style="color:var(--copper)">2. Adoption</td>
+            <td>People use the tool but have not changed their process. Senior practitioners disengage.</td>
+            <td>The role transition is too threatening or too undesigned. Professional identity is at stake.</td>
+          </tr>
+          <tr class="reveal">
+            <td class="friction-label" style="color:var(--red)">3. Value</td>
+            <td>People adopt and get faster, but business results do not move. Downstream queues grow.</td>
+            <td>Freed capacity is evaporating. No designed destination. The value is disappearing between roles.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- BEHAVIORAL DESIGN                        -->
+    <!-- ═══════════════════════════════════════ -->
+    <section class="section-block-lg">
+      <span class="section-label reveal">The Missing Piece</span>
+      <h2 class="reveal reveal-d1">The behavioral design most programs are missing</h2>
+
+      <h3 class="reveal">The wrong starting point</h3>
+
+      <p class="reveal">Most AI business cases start from the tool: "Copilot saves developers five hours per week." That is a statement about a technology with no connection to a business outcome.</p>
+
+      <p class="reveal">An honest business case starts from the capability, not the tool. Not "Copilot saves five hours per week" but "We need a 30% reduction in legacy system incidents over twelve months. What does AI need to deliver, what behaviors need to change, and where does freed capacity need to go to make that happen?"</p>
+
+      <p class="reveal">That requires measuring differently than most organizations are used to.</p>
+
+      <!-- Measurement Visualization: Resolution -->
+      <div class="anim-container reveal" id="anim-resolution">
+        <svg viewBox="0 0 780 360" id="resolution-svg">
+          <rect width="780" height="360" fill="var(--bg)"/>
+
+          <!-- LEFT: Low resolution (centered at x=175) -->
+          <text x="175" y="28" text-anchor="middle" font-size="10" fill="var(--green)" letter-spacing="0.1em" font-weight="600">LOW RESOLUTION</text>
+          <text x="175" y="48" text-anchor="middle" font-size="12" fill="var(--charcoal)" opacity="0.75">Monthly Active Users</text>
+
+          <g id="lores-grid" opacity="0"></g>
+
+          <text id="lores-pct" x="175" y="275" text-anchor="middle" font-size="26" font-weight="700" fill="var(--green)" opacity="0">87% adopted</text>
+          <text id="lores-sub1" x="175" y="298" text-anchor="middle" font-size="11" fill="var(--charcoal)" opacity="0">Everything looks green.</text>
+          <text id="lores-sub2" x="175" y="315" text-anchor="middle" font-size="11" fill="var(--charcoal)" opacity="0">No detail visible.</text>
+
+          <!-- Center divider -->
+          <g id="res-arrow" opacity="0">
+            <line x1="355" y1="80" x2="355" y2="250" stroke="var(--charcoal)" stroke-width="1" opacity="0.08" stroke-dasharray="4 4"/>
+          </g>
+
+          <!-- RIGHT: High resolution (centered at x=580) -->
+          <text x="580" y="28" text-anchor="middle" font-size="10" fill="var(--teal)" letter-spacing="0.1em" font-weight="600">HIGH RESOLUTION</text>
+          <text x="580" y="48" text-anchor="middle" font-size="12" fill="var(--charcoal)" opacity="0.75">Workflow Substitution Rate</text>
+
+          <g id="hires-grid" opacity="0"></g>
+
+          <!-- Role labels (left edge of hires grid, vertically centered per group) -->
+          <g id="res-roles" opacity="0">
+            <text x="400" y="115" font-size="10" fill="var(--teal)" font-weight="600">Junior</text>
+            <text x="400" y="181" font-size="10" fill="var(--copper)" font-weight="600">Mid</text>
+            <text x="400" y="247" font-size="10" fill="var(--red)" font-weight="600">Senior</text>
+          </g>
+
+          <!-- Legend (centered under hires grid) -->
+          <g id="res-legend" opacity="0">
+            <rect x="445" y="278" width="10" height="10" rx="2" fill="var(--teal)" opacity="0.6"/>
+            <text x="461" y="288" font-size="10" fill="var(--charcoal)" opacity="0.75">AI-initiated</text>
+            <rect x="540" y="278" width="10" height="10" rx="2" fill="var(--copper)" opacity="0.55"/>
+            <text x="556" y="288" font-size="10" fill="var(--charcoal)" opacity="0.75">Partial</text>
+            <rect x="615" y="278" width="10" height="10" rx="2" fill="var(--red)" opacity="0.5"/>
+            <text x="631" y="288" font-size="10" fill="var(--charcoal)" opacity="0.75">Manual</text>
+          </g>
+
+          <text id="res-sub" x="580" y="310" text-anchor="middle" font-size="11" fill="var(--charcoal)" opacity="0">Same people. Patterns become visible.</text>
+
+          <text id="res-insight" x="390" y="345" text-anchor="middle" font-size="11" fill="var(--charcoal)" opacity="0" font-style="italic">The shallow metric says "87% adopted." The deep metric shows three completely different stories.</text>
+        </svg>
+      </div>
+
+      <p class="reveal">The problem with self-reporting is not just imprecision. It can be backwards. METR's 2025 trial found developers who believed they were 20% faster with AI were actually 19% slower. AI interaction data can do better, but turning it into a role-level diagnostic requires joining it with org data and workflow systems. The infrastructure is what most organizations still have to build.</p>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- PAVED PATH                               -->
+    <!-- ═══════════════════════════════════════ -->
+    <section class="section-block-lg">
+      <span class="section-label reveal">Design Framework</span>
+      <h3 class="reveal reveal-d1">Architecting the paved path</h3>
+
+      <p class="reveal">Within any given team, a single AI deployment creates multiple friction levels at once. Each requires a different design, and all are happening simultaneously. One principle matters more than any other: the incentive structure has to change before the behavior does.</p>
+
+      <table class="editorial-table reveal">
+        <thead>
+          <tr>
+            <th style="width:12%">Friction</th>
+            <th style="width:29%">Environment</th>
+            <th style="width:29%">Capability</th>
+            <th style="width:30%">Incentives</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="reveal">
+            <td class="friction-label friction-low">Low</td>
+            <td>New behavior is the default path.</td>
+            <td>AI literacy for this workflow.</td>
+            <td>Don't penalize the AI path.</td>
+          </tr>
+          <tr class="reveal">
+            <td class="friction-label friction-med">Medium</td>
+            <td>Build the skill inside the work. Pair with practitioners.</td>
+            <td>Evaluation judgment: practiced, not explained.</td>
+            <td>New work shows up in reviews and development plans.</td>
+          </tr>
+          <tr class="reveal">
+            <td class="friction-label friction-high">High</td>
+            <td>Pilots, peer groups, protected time.</td>
+            <td>Strategic thinking under ambiguity.</td>
+            <td>Restructured metrics, career track, and compensation.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="reveal">Webb and Sheeran's meta-analysis found that even when you successfully change someone's intention, the effect on their actual behavior is surprisingly small.</p>
+
+      <p class="reveal">At low friction, the environment carries the intention. At medium and high friction, the environment, capability building, and incentive structure have to do almost all the work.</p>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- SECTION DIVIDER                         -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="section-divider reveal" aria-hidden="true">
+      <svg viewBox="0 0 780 40" class="woven-divider"></svg>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- TWO DIVERGING FUTURES                    -->
+    <!-- ═══════════════════════════════════════ -->
+    <section class="section-block-lg">
+      <span class="section-label reveal">The Lesson from Electricity</span>
+      <h2 class="reveal reveal-d1">Build the muscle now</h2>
+
+      <p class="reveal">The productivity paradox was never solved just by better technology. It was solved by the organizations that did something harder: they redesigned work itself, the roles, the flows, the skills, the meaning of expertise, and built capabilities the old system could never have supported.</p>
+
+      <!-- ══ ANIMATION 6: DIVERGING FUTURES ══ -->
+      <div class="anim-container reveal" id="anim-futures">
+        <svg viewBox="0 0 780 310" id="futures-svg">
+          <rect width="780" height="310" fill="var(--bg)"/>
+
+          <text x="390" y="24" text-anchor="middle" font-size="10" fill="var(--charcoal)" opacity="0.65" letter-spacing="0.1em" font-weight="500">TWO FUTURES</text>
+
+          <!-- Legend -->
+          <g id="futures-legend-top" opacity="0">
+            <line x1="560" y1="52" x2="585" y2="52" stroke="var(--teal)" stroke-width="2.5"/>
+            <text x="592" y="56" font-size="12" font-weight="600" fill="var(--teal)">Build the muscle now</text>
+            <text x="592" y="72" font-size="10" fill="var(--charcoal)" opacity="0.6">Each wave easier to absorb</text>
+          </g>
+          <g id="futures-legend-bot" opacity="0">
+            <line x1="560" y1="98" x2="585" y2="98" stroke="var(--red)" stroke-width="2" stroke-dasharray="4 3"/>
+            <text x="592" y="102" font-size="12" font-weight="600" fill="var(--red)">Wait for the technology</text>
+            <text x="592" y="118" font-size="10" fill="var(--charcoal)" opacity="0.6">Permanently loses ability to benefit</text>
+          </g>
+
+          <!-- Axis -->
+          <line x1="80" y1="245" x2="620" y2="245" stroke="var(--charcoal)" stroke-width="1" opacity="0.12"/>
+          <text x="350" y="270" text-anchor="middle" font-size="10" fill="var(--muted)">Time / AI waves</text>
+
+          <!-- Wave markers -->
+          <g id="futures-waves" opacity="0">
+            <line x1="130" y1="240" x2="130" y2="250" stroke="var(--charcoal)" stroke-width="1" opacity="0.3"/>
+            <text x="130" y="262" text-anchor="middle" font-size="8" fill="var(--muted)">Wave 1</text>
+            <line x1="230" y1="240" x2="230" y2="250" stroke="var(--charcoal)" stroke-width="1" opacity="0.3"/>
+            <text x="230" y="262" text-anchor="middle" font-size="8" fill="var(--muted)">Wave 2</text>
+            <line x1="330" y1="240" x2="330" y2="250" stroke="var(--charcoal)" stroke-width="1" opacity="0.3"/>
+            <text x="330" y="262" text-anchor="middle" font-size="8" fill="var(--muted)">Wave 3</text>
+            <line x1="430" y1="240" x2="430" y2="250" stroke="var(--charcoal)" stroke-width="1" opacity="0.3"/>
+            <text x="430" y="262" text-anchor="middle" font-size="8" fill="var(--muted)">Wave 4</text>
+            <line x1="530" y1="240" x2="530" y2="250" stroke="var(--charcoal)" stroke-width="1" opacity="0.3"/>
+            <text x="530" y="262" text-anchor="middle" font-size="8" fill="var(--muted)">Wave 5</text>
+          </g>
+
+          <!-- Compounding path -->
+          <path id="futures-up" d="M100,198 C150,193 190,180 240,168 C290,153 320,133 370,112 C420,86 460,66 510,52 C540,42 570,34 600,28" fill="none" stroke="var(--teal)" stroke-width="2.5" opacity="0" stroke-dasharray="620" stroke-dashoffset="620"/>
+
+          <!-- Degrading path -->
+          <path id="futures-down" d="M100,198 C150,203 190,210 240,218 C290,223 320,227 370,230 C420,233 460,235 510,236 C540,237 570,237 600,237" fill="none" stroke="var(--red)" stroke-width="2" stroke-dasharray="4 3" opacity="0" stroke-dashoffset="620"/>
+
+          <!-- Lockout -->
+          <line id="futures-lockout" x1="440" y1="237" x2="620" y2="237" stroke="var(--red)" stroke-width="1" opacity="0" stroke-dasharray="3 3"/>
+          <text id="futures-lockout-label" x="628" y="240" font-size="9" fill="var(--red)" opacity="0">lockout</text>
+
+          <!-- Gap annotation -->
+          <g id="futures-gap" opacity="0">
+            <line x1="530" y1="52" x2="530" y2="236" stroke="var(--charcoal)" stroke-width="1" stroke-dasharray="3 3" opacity="0.2"/>
+            <text x="540" y="148" font-size="10" fill="var(--charcoal)" opacity="0.65">Competitive</text>
+            <text x="540" y="162" font-size="10" fill="var(--charcoal)" opacity="0.65">distance</text>
+          </g>
+
+          <!-- Starting point -->
+          <circle id="futures-start" cx="100" cy="198" r="5" fill="var(--charcoal)" opacity="0"/>
+          <text id="futures-start-label" x="100" y="218" text-anchor="middle" font-size="9" fill="var(--muted)" opacity="0">Today</text>
+
+          <!-- Bottom insight -->
+          <text x="390" y="296" text-anchor="middle" font-size="11" fill="var(--charcoal)" opacity="0.55" font-style="italic" id="futures-insight">There is no shortcut. A competitor who starts later with a bigger budget cannot close this gap.</text>
+        </svg>
+      </div>
+
+      <p class="reveal">The organizations building the reallocation muscle today are not just capturing more from their current AI investment. They are building the capability to capture more from every investment that follows.</p>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- CITATIONS                                -->
+    <!-- ═══════════════════════════════════════ -->
+    <section class="citation-section reveal">
+      <h3>References</h3>
+      <ul class="citation-list">
+        <li class="reveal">Solow, R. (1987). "We'd Better Watch Out." New York Times Book Review, July 12, 1987.</li>
+        <li class="reveal">David, P.A. (1990). "The Dynamo and the Computer: An Historical Perspective on the Modern Productivity Paradox." American Economic Review, 80(2), 355-361.</li>
+        <li class="reveal">Zuboff, S. (1988). In the Age of the Smart Machine: The Future of Work and Power. New York: Basic Books.</li>
+        <li class="reveal">Rock, D. (2008). "SCARF: A Brain-Based Model for Collaborating With and Influencing Others." NeuroLeadership Journal, 1(1), 44-52.</li>
+        <li class="reveal">Ibarra, H. (1999). "Provisional Selves: Experimenting with Image and Identity in Professional Adaptation." Administrative Science Quarterly, 44(4), 764-791.</li>
+        <li class="reveal">Webb, T.L. & Sheeran, P. (2006). "Does Changing Behavioral Intentions Engender Behavior Change? A Meta-Analysis." Psychological Bulletin, 132(2), 249-268.</li>
+        <li class="reveal">Yotzov, I., Barrero, J.M., Bloom, N. et al. (2026). "Firm Data on AI." NBER Working Paper No. 34836.</li>
+        <li class="reveal">METR (2025). "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity."</li>
+        <li class="reveal">UK Government Digital Service (2024). Cross-government Microsoft 365 Copilot experiment (20,000 civil servants).</li>
+        <li class="reveal">Microsoft WorkLab (2024). "What Can Copilot's Earliest Users Teach Us About AI at Work?"</li>
+        <li class="reveal">Damron, W. (2025). "Gains from Factory Electrification: Evidence from North Carolina, 1905-1926." Explorations in Economic History, 96.</li>
+        <li class="reveal">Brynjolfsson, E. (1993). "The Productivity Paradox of Information Technology." Communications of the ACM, 36(12), 66-77.</li>
+      </ul>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer reveal">
+      <p style="font-size:13px; color:var(--muted); opacity:0.7;">Strategic Research &middot; 2026</p>
+    </footer>
+
+  </div><!-- .article-content -->
+</div><!-- .article-wrap -->
+
+<script>
+// ═══════════════════════════════════════════════════
+// SCROLL REVEAL
+// ═══════════════════════════════════════════════════
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+
+// ═══════════════════════════════════════════════════
+// WOVEN THREAD DIVIDERS (traveling wave, mixed shapes)
+// ═══════════════════════════════════════════════════
+(function() {
+  const NS = 'http://www.w3.org/2000/svg';
+
+  const pathDefs = {
+    copper: "M0,20 C50,20 80,8 130,8 C180,8 210,32 260,32 C310,32 340,8 390,8 C440,8 470,32 520,32 C570,32 600,8 650,8 C700,8 730,20 780,20",
+    teal:   "M0,20 C50,20 80,32 130,32 C180,32 210,8 260,8 C310,8 340,32 390,32 C440,32 470,8 520,8 C570,8 600,32 650,32 C700,32 730,20 780,20",
+    blue:   "M0,20 C65,20 100,12 165,12 C230,12 265,28 330,28 C395,28 430,12 495,12 C560,12 595,28 660,28 C720,28 750,20 780,20"
+  };
+
+  function samplePath(svg, pathD, count) {
+    const tmp = document.createElementNS(NS, 'path');
+    tmp.setAttribute('d', pathD);
+    svg.appendChild(tmp);
+    const len = tmp.getTotalLength();
+    const pts = [];
+    for (let i = 0; i < count; i++) {
+      const pt = tmp.getPointAtLength((i / (count - 1)) * len);
+      pts.push({ x: pt.x, y: pt.y, t: i / (count - 1) });
+    }
+    svg.removeChild(tmp);
+    return pts;
+  }
+
+  function createShape(typeIdx, color, opacity) {
+    let el;
+    if (typeIdx === 0) {
+      el = document.createElementNS(NS, 'polygon');
+      el.setAttribute('fill', color);
+      el.setAttribute('opacity', opacity);
+    } else if (typeIdx === 1) {
+      el = document.createElementNS(NS, 'circle');
+      el.setAttribute('r', '2.2');
+      el.setAttribute('fill', color);
+      el.setAttribute('opacity', opacity);
+    } else {
+      el = document.createElementNS(NS, 'rect');
+      el.setAttribute('width', '5');
+      el.setAttribute('height', '4');
+      el.setAttribute('rx', '0.8');
+      el.setAttribute('fill', color);
+      el.setAttribute('opacity', opacity);
+    }
+    return el;
+  }
+
+  function positionShape(item, offsetY) {
+    const el = item.el;
+    const x = item.baseX;
+    const y = item.baseY + offsetY;
+    if (item.shapeType === 0) {
+      el.setAttribute('points', `${x},${y - 2.8} ${x + 2.8},${y + 2} ${x - 2.8},${y + 2}`);
+    } else if (item.shapeType === 1) {
+      el.setAttribute('cx', x);
+      el.setAttribute('cy', y);
+    } else {
+      el.setAttribute('x', x - 2.5);
+      el.setAttribute('y', y - 2);
+    }
+  }
+
+  const PERIOD = 6000;
+  const AMP = 3;
+  const PHASE_OFFSET = (2 * Math.PI) / 3;
+  const WAVE_LENGTH = 1;
+
+  const threadCfgs = [
+    { path: pathDefs.copper, color: '#C4A07C', opacity: '0.4',  count: 65, phase: 0 },
+    { path: pathDefs.teal,   color: '#007B5F', opacity: '0.35', count: 60, phase: PHASE_OFFSET },
+    { path: pathDefs.blue,   color: '#B8D8E8', opacity: '0.45', count: 70, phase: PHASE_OFFSET * 2 },
+  ];
+
+  // Build all dividers
+  const allItems = [];
+  const svgs = document.querySelectorAll('.woven-divider');
+
+  svgs.forEach((svg) => {
+    threadCfgs.forEach((cfg) => {
+      const pts = samplePath(svg, cfg.path, cfg.count);
+      const g = document.createElementNS(NS, 'g');
+
+      pts.forEach((pt, i) => {
+        const shapeType = i % 3;
+        const el = createShape(shapeType, cfg.color, cfg.opacity);
+        g.appendChild(el);
+        const item = { el, baseX: pt.x, baseY: pt.y, t: pt.t, phase: cfg.phase, shapeType };
+        positionShape(item, 0);
+        allItems.push(item);
+      });
+
+      svg.appendChild(g);
+    });
+  });
+
+  // Single shared animation loop for all dividers
+  function tick(now) {
+    const timeAngle = (now / PERIOD) * 2 * Math.PI;
+    allItems.forEach(item => {
+      const spatialPhase = item.t * WAVE_LENGTH * 2 * Math.PI;
+      const offset = Math.sin(timeAngle - spatialPhase + item.phase) * AMP;
+      positionShape(item, offset);
+    });
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+
+
+// ═══════════════════════════════════════════════════
+// ANIMATION 1: FACTORY TRANSFORMATION (timeline-driven morph)
+// ═══════════════════════════════════════════════════
+(function() {
+  const container = document.getElementById('anim-factory');
+  let running = false;
+  const NS = 'http://www.w3.org/2000/svg';
+
+  // ── Node positions ──
+  const gridPos = [];
+  for (let r = 0; r < 3; r++) {
+    for (let c = 0; c < 4; c++) {
+      gridPos.push({ x: 70 + c * 72, y: 65 + r * 72 });
+    }
+  }
+
+  const organicPos = [
+    { x: 52, y: 55 },  { x: 120, y: 38 }, { x: 195, y: 62 },
+    { x: 68, y: 122 }, { x: 148, y: 108 }, { x: 228, y: 95 },
+    { x: 95, y: 182 }, { x: 175, y: 170 }, { x: 260, y: 148 },
+    { x: 60, y: 240 }, { x: 150, y: 248 }, { x: 245, y: 225 },
+  ];
+
+  // ── Edge sets ──
+  const gridEdges = [
+    [0,1],[1,2],[2,3],[4,5],[5,6],[6,7],[8,9],[9,10],[10,11],
+    [0,4],[1,5],[2,6],[3,7],[4,8],[5,9],[6,10],[7,11]
+  ];
+  const organicEdges = [
+    [0,1],[1,2],[0,3],[1,4],[2,5],[3,4],[4,5],
+    [3,6],[4,7],[5,8],[6,7],[7,8],
+    [6,9],[7,10],[8,11],[9,10],[10,11]
+  ];
+
+  // ── Build SVG elements ──
+  const edgesG = document.getElementById('f-edges');
+  const nodesG = document.getElementById('f-nodes');
+  const particlesG = document.getElementById('f-particles');
+
+  // We'll maintain a max set of edges (organicEdges has 17 = same as gridEdges)
+  const maxEdges = 17;
+  const edgeEls = [];
+  for (let i = 0; i < maxEdges; i++) {
+    const line = document.createElementNS(NS, 'line');
+    line.setAttribute('x1', 0); line.setAttribute('y1', 0);
+    line.setAttribute('x2', 0); line.setAttribute('y2', 0);
+    line.setAttribute('stroke', '#2D2D2D');
+    line.setAttribute('stroke-width', '1');
+    line.setAttribute('opacity', '0');
+    edgesG.appendChild(line);
+    edgeEls.push(line);
+  }
+
+  const nodeEls = [];
+  for (let i = 0; i < 12; i++) {
+    const circle = document.createElementNS(NS, 'circle');
+    circle.setAttribute('cx', gridPos[i].x);
+    circle.setAttribute('cy', gridPos[i].y);
+    circle.setAttribute('r', '0');
+    circle.setAttribute('fill', '#2D2D2D');
+    circle.setAttribute('opacity', '0.25');
+    nodesG.appendChild(circle);
+    nodeEls.push(circle);
+  }
+
+  // Current interpolated positions
+  let currentPos = gridPos.map(p => ({ x: p.x, y: p.y }));
+
+  function setEdges(edgeList, positions, color, opac) {
+    edgeEls.forEach((el, i) => {
+      if (i < edgeList.length) {
+        const [a, b] = edgeList[i];
+        el.setAttribute('x1', positions[a].x);
+        el.setAttribute('y1', positions[a].y);
+        el.setAttribute('x2', positions[b].x);
+        el.setAttribute('y2', positions[b].y);
+        el.setAttribute('stroke', color);
+        el.setAttribute('opacity', opac);
+      } else {
+        el.setAttribute('opacity', '0');
+      }
+    });
+  }
+
+  // ── Morph animation ──
+  function morphNodes(fromPos, toPos, duration, onFrame, onDone) {
+    const start = performance.now();
+    function tick(now) {
+      let t = Math.min((now - start) / duration, 1);
+      // ease out cubic
+      t = 1 - Math.pow(1 - t, 3);
+      for (let i = 0; i < 12; i++) {
+        currentPos[i].x = fromPos[i].x + (toPos[i].x - fromPos[i].x) * t;
+        currentPos[i].y = fromPos[i].y + (toPos[i].y - fromPos[i].y) * t;
+        nodeEls[i].setAttribute('cx', currentPos[i].x);
+        nodeEls[i].setAttribute('cy', currentPos[i].y);
+      }
+      if (onFrame) onFrame(t);
+      if (t < 1) requestAnimationFrame(tick);
+      else if (onDone) onDone();
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // ── Timeline cursor animation ──
+  function animateCursor(fromX, toX, duration, onDone) {
+    const cursor = document.getElementById('f-cursor');
+    const progress = document.getElementById('f-progress');
+    const start = performance.now();
+    function tick(now) {
+      let t = Math.min((now - start) / duration, 1);
+      t = t * t * (3 - 2 * t); // smoothstep
+      const x = fromX + (toX - fromX) * t;
+      cursor.setAttribute('cx', x);
+      progress.setAttribute('x2', x);
+      if (t < 1) requestAnimationFrame(tick);
+      else if (onDone) onDone();
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // ── Build particles for organic state ──
+  function showParticles() {
+    particlesG.innerHTML = '';
+    organicEdges.slice(0, 8).forEach(([a, b], i) => {
+      const c = document.createElementNS(NS, 'circle');
+      c.setAttribute('r', '3');
+      c.setAttribute('fill', '#007B5F');
+      const am = document.createElementNS(NS, 'animateMotion');
+      am.setAttribute('dur', `${1.5 + i * 0.3}s`);
+      am.setAttribute('repeatCount', 'indefinite');
+      am.setAttribute('begin', `${i * 0.2}s`);
+      am.setAttribute('path', `M${organicPos[a].x},${organicPos[a].y} L${organicPos[b].x},${organicPos[b].y}`);
+      c.appendChild(am);
+      const an = document.createElementNS(NS, 'animate');
+      an.setAttribute('attributeName', 'opacity');
+      an.setAttribute('values', '0;0.6;0');
+      an.setAttribute('dur', `${1.5 + i * 0.3}s`);
+      an.setAttribute('repeatCount', 'indefinite');
+      an.setAttribute('begin', `${i * 0.2}s`);
+      c.appendChild(an);
+      particlesG.appendChild(c);
+    });
+  }
+
+  // ── Annotation helper ──
+  function setAnnotation(label, line1, line2, line3, line3Color) {
+    const g = document.getElementById('f-annotation');
+    g.setAttribute('opacity', '1');
+    g.style.transition = 'opacity 0.5s ease';
+    document.getElementById('f-anno-label').textContent = label;
+    document.getElementById('f-anno-line1').textContent = line1;
+    document.getElementById('f-anno-line2').textContent = line2;
+    const l3 = document.getElementById('f-anno-line3');
+    l3.textContent = line3;
+    l3.setAttribute('fill', line3Color || '#C45B4A');
+  }
+
+  // ── Main sequence ──
+  function run() {
+    if (running) return;
+    running = true;
+
+    const cursor = document.getElementById('f-cursor');
+    const progress = document.getElementById('f-progress');
+    const timeline = document.getElementById('f-timeline');
+
+    // Phase 0: Show timeline
+    setTimeout(() => {
+      timeline.style.transition = 'opacity 0.6s ease';
+      timeline.setAttribute('opacity', '1');
+      cursor.setAttribute('opacity', '1');
+    }, 200);
+
+    // Phase 1: Cursor moves to 1880s, grid appears
+    setTimeout(() => {
+      animateCursor(60, 100, 800, () => {
+        // Highlight epoch 1
+        document.getElementById('f-epoch-1').style.transition = 'opacity 0.4s ease';
+        document.getElementById('f-epoch-1').setAttribute('opacity', '1');
+      });
+
+      // Grid nodes appear with stagger
+      nodeEls.forEach((el, i) => {
+        setTimeout(() => {
+          el.setAttribute('r', '7');
+          el.style.transition = 'r 0.5s cubic-bezier(0.16,1,0.3,1)';
+        }, 300 + i * 50);
+      });
+      // Grid edges appear
+      setTimeout(() => {
+        setEdges(gridEdges, gridPos, '#2D2D2D', '0.1');
+      }, 500);
+
+      setAnnotation('THE OLD FACTORY', 'Rigid grid layout', 'Every station in its fixed place', '');
+
+    }, 800);
+
+    // Phase 2: Cursor moves to "40 years", one node swaps color (motor swap)
+    setTimeout(() => {
+      animateCursor(100, 340, 1800, () => {
+        document.getElementById('f-epoch-2').style.transition = 'opacity 0.4s ease';
+        document.getElementById('f-epoch-2').setAttribute('opacity', '1');
+      });
+
+      // Highlight one node as "swapped motor"
+      setTimeout(() => {
+        const swapNode = nodeEls[5]; // middle node
+        swapNode.style.transition = 'fill 0.6s ease, opacity 0.6s ease';
+        swapNode.setAttribute('fill', '#007B5F');
+        swapNode.setAttribute('r', '11');
+        swapNode.setAttribute('opacity', '0.85');
+
+        setAnnotation('MOTOR SWAP', 'New technology, old layout', 'Structure unchanged for 40 years', 'Same output');
+      }, 1200);
+
+    }, 3200);
+
+    // Phase 3: Cursor reaches "Redesign", nodes morph
+    setTimeout(() => {
+      // Change cursor to teal
+      cursor.setAttribute('stroke', '#007B5F');
+      progress.setAttribute('stroke', '#007B5F');
+
+      animateCursor(340, 600, 1600, () => {
+        document.getElementById('f-epoch-3').style.transition = 'opacity 0.4s ease';
+        document.getElementById('f-epoch-3').setAttribute('opacity', '1');
+      });
+
+      // Start morph after cursor begins moving
+      setTimeout(() => {
+        // Transition all nodes to teal
+        nodeEls.forEach((el, i) => {
+          setTimeout(() => {
+            el.setAttribute('fill', '#007B5F');
+            el.setAttribute('opacity', '0.7');
+            el.setAttribute('r', '8');
+            el.style.transition = 'fill 0.5s ease, opacity 0.5s ease';
+          }, i * 40);
+        });
+
+        // Morph positions
+        const frozenFrom = currentPos.map(p => ({ x: p.x, y: p.y }));
+        morphNodes(frozenFrom, organicPos, 1800,
+          (t) => {
+            // Update edges during morph: interpolate from grid to organic
+            const blendEdges = t < 0.5 ? gridEdges : organicEdges;
+            const color = t < 0.3 ? '#2D2D2D' : '#007B5F';
+            const opac = 0.1 + t * 0.15;
+            setEdges(blendEdges, currentPos, color, String(opac));
+          },
+          () => {
+            // Final state: organic edges
+            setEdges(organicEdges, organicPos, '#007B5F', '0.25');
+            showParticles();
+          }
+        );
+
+        setAnnotation('REDESIGNED FACTORY', 'New layout, new roles, new flow', 'The system itself has changed', 'New capabilities');
+        document.getElementById('f-anno-line3').setAttribute('fill', '#007B5F');
+
+      }, 600);
+
+      // Show insight + replay
+      setTimeout(() => {
+        document.getElementById('f-insight').style.transition = 'opacity 0.8s ease';
+        document.getElementById('f-insight').setAttribute('opacity', '0.45');
+        document.getElementById('factory-replay').style.transition = 'opacity 0.5s ease';
+        document.getElementById('factory-replay').setAttribute('opacity', '1');
+      }, 2800);
+
+    }, 7000);
+  }
+
+  function reset() {
+    running = false;
+    particlesG.innerHTML = '';
+
+    // Reset cursor
+    const cursor = document.getElementById('f-cursor');
+    const progress = document.getElementById('f-progress');
+    cursor.setAttribute('cx', '60'); cursor.setAttribute('stroke', '#C4A07C');
+    progress.setAttribute('x2', '60'); progress.setAttribute('stroke', '#C4A07C');
+    cursor.setAttribute('opacity', '0');
+
+    // Reset timeline epochs
+    ['f-epoch-1', 'f-epoch-2', 'f-epoch-3'].forEach(id => {
+      document.getElementById(id).setAttribute('opacity', '0.45');
+      document.getElementById(id).style.transition = 'none';
+    });
+    document.getElementById('f-timeline').setAttribute('opacity', '0');
+
+    // Reset nodes to grid
+    nodeEls.forEach((el, i) => {
+      el.style.transition = 'none';
+      el.setAttribute('cx', gridPos[i].x);
+      el.setAttribute('cy', gridPos[i].y);
+      el.setAttribute('r', '0');
+      el.setAttribute('fill', '#2D2D2D');
+      el.setAttribute('opacity', '0.25');
+      currentPos[i] = { x: gridPos[i].x, y: gridPos[i].y };
+    });
+
+    // Reset edges
+    edgeEls.forEach(el => el.setAttribute('opacity', '0'));
+
+    // Reset annotation
+    document.getElementById('f-annotation').setAttribute('opacity', '0');
+    document.getElementById('f-insight').setAttribute('opacity', '0');
+    document.getElementById('factory-replay').setAttribute('opacity', '0');
+
+    setTimeout(run, 300);
+  }
+
+  document.getElementById('factory-replay').addEventListener('click', reset);
+
+  const obs = new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) run();
+  }, { threshold: 0.3 });
+  obs.observe(container);
+})();
+
+
+
+// ═══════════════════════════════════════════════════
+// SCARF THREAT RADAR (lull then punch)
+// ═══════════════════════════════════════════════════
+(function() {
+  const NS = 'http://www.w3.org/2000/svg';
+  const container = document.getElementById('anim-scarf');
+  const svg = document.getElementById('scarf-svg');
+  const rowsG = document.getElementById('scarf-rows');
+
+  const dims = [
+    { label: 'Status', desc: '"Am I still the expert?"' },
+    { label: 'Certainty', desc: '"Will my role exist?"' },
+    { label: 'Autonomy', desc: '"Am I supervising or supervised?"' },
+    { label: 'Relatedness', desc: '"Is my team still my team?"' },
+    { label: 'Fairness', desc: '"Why me and not them?"' },
+  ];
+
+  const prevLevels = [0.15, 0.7, 0.2, 0.1, 0.05];
+  const aiLevels   = [0.88, 0.92, 0.82, 0.72, 0.78];
+
+  const startY = 80, rowH = 56, barX = 260, maxW = 460;
+  const copperBars = [];
+  const redBars = [];
+  const rowEls = [];
+
+  dims.forEach((dim, i) => {
+    const y = startY + i * rowH;
+    const g = document.createElementNS(NS, 'g');
+    g.setAttribute('opacity', '0');
+
+    const bg = document.createElementNS(NS, 'rect');
+    bg.setAttribute('x', '30'); bg.setAttribute('y', y);
+    bg.setAttribute('width', '720'); bg.setAttribute('height', String(rowH - 6));
+    bg.setAttribute('rx', '4'); bg.setAttribute('fill', '#C45B4A'); bg.setAttribute('opacity', '0.03');
+    g.appendChild(bg);
+
+    const label = document.createElementNS(NS, 'text');
+    label.setAttribute('x', '40'); label.setAttribute('y', String(y + 20));
+    label.setAttribute('font-size', '13'); label.setAttribute('font-weight', '600');
+    label.setAttribute('fill', '#2D2D2D'); label.setAttribute('opacity', '0.85');
+    label.textContent = dim.label;
+    g.appendChild(label);
+
+    const desc = document.createElementNS(NS, 'text');
+    desc.setAttribute('x', '40'); desc.setAttribute('y', String(y + 38));
+    desc.setAttribute('font-size', '10'); desc.setAttribute('fill', '#6E6A66');
+    desc.textContent = dim.desc;
+    g.appendChild(desc);
+
+    const copper = document.createElementNS(NS, 'rect');
+    copper.setAttribute('x', barX); copper.setAttribute('y', String(y + 6));
+    copper.setAttribute('width', '0'); copper.setAttribute('height', '16');
+    copper.setAttribute('rx', '3'); copper.setAttribute('fill', '#C4A07C'); copper.setAttribute('opacity', '0.55');
+    g.appendChild(copper);
+    copperBars.push(copper);
+
+    const red = document.createElementNS(NS, 'rect');
+    red.setAttribute('x', barX); red.setAttribute('y', String(y + 28));
+    red.setAttribute('width', '0'); red.setAttribute('height', '16');
+    red.setAttribute('rx', '3'); red.setAttribute('fill', '#C45B4A'); red.setAttribute('opacity', '0.5');
+    g.appendChild(red);
+    redBars.push(red);
+
+    rowsG.appendChild(g);
+    rowEls.push(g);
+  });
+
+  const obs = new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) {
+      // Legend
+      setTimeout(() => {
+        document.getElementById('scarf-legend').style.transition = 'opacity 0.5s ease';
+        document.getElementById('scarf-legend').setAttribute('opacity', '1');
+      }, 300);
+
+      // Rows fade in
+      rowEls.forEach((g, i) => {
+        setTimeout(() => {
+          g.style.transition = 'opacity 0.5s ease';
+          g.setAttribute('opacity', '1');
+        }, 400 + i * 100);
+      });
+
+      // Copper bars stagger in one by one (lull)
+      copperBars.forEach((bar, i) => {
+        setTimeout(() => {
+          bar.style.transition = 'width 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+          bar.setAttribute('width', String(maxW * prevLevels[i]));
+        }, 800 + i * 350);
+      });
+
+      // Punch: ALL red bars at once
+      const punchTime = 800 + 5 * 350 + 600;
+      setTimeout(() => {
+        redBars.forEach((bar, i) => {
+          bar.style.transition = 'width 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+          bar.setAttribute('width', String(maxW * aiLevels[i]));
+        });
+      }, punchTime);
+
+      // Insight
+      setTimeout(() => {
+        document.getElementById('scarf-insight').style.transition = 'opacity 0.6s ease';
+        document.getElementById('scarf-insight').setAttribute('opacity', '0.5');
+      }, punchTime + 800);
+    }
+  }, { threshold: 0.2 });
+  obs.observe(container);
+})();
+
+
+
+// ═══════════════════════════════════════════════════
+// ANIMATION 4: TUESDAY AFTERNOON (horizontal timeline)
+// ═══════════════════════════════════════════════════
+(function() {
+  const container = document.getElementById('anim-tuesday');
+  let showDesigned = false;
+  let entered = false;
+
+  function runEntrance() {
+    if (entered) return;
+    entered = true;
+
+    // Phase 1: Old task visible (already in SVG)
+
+    // Phase 2: AI compresses it (after 2s)
+    setTimeout(() => {
+      const old = document.getElementById('t-old-task');
+      old.style.transition = 'width 1s cubic-bezier(0.16,1,0.3,1), opacity 0.5s ease';
+      old.setAttribute('width', '93');
+      old.setAttribute('opacity', '0');
+      document.getElementById('t-old-label').style.transition = 'opacity 0.3s ease';
+      document.getElementById('t-old-label').setAttribute('opacity', '0');
+      document.getElementById('t-old-time').style.transition = 'opacity 0.3s ease';
+      document.getElementById('t-old-time').setAttribute('opacity', '0');
+
+      setTimeout(() => {
+        document.getElementById('t-ai-task').style.transition = 'opacity 0.5s ease';
+        document.getElementById('t-ai-task').setAttribute('opacity', '0.55');
+        document.getElementById('t-ai-label').style.transition = 'opacity 0.4s ease 0.1s';
+        document.getElementById('t-ai-label').setAttribute('opacity', '1');
+        document.getElementById('t-ai-badge').style.transition = 'opacity 0.4s ease 0.2s';
+        document.getElementById('t-ai-badge').setAttribute('opacity', '0.85');
+      }, 400);
+
+      setTimeout(() => {
+        document.getElementById('t-gap').style.transition = 'opacity 0.5s ease';
+        document.getElementById('t-gap').setAttribute('opacity', '0.5');
+        document.getElementById('t-gap-label').style.transition = 'opacity 0.5s ease 0.2s';
+        document.getElementById('t-gap-label').setAttribute('opacity', '0.85');
+      }, 800);
+    }, 2000);
+
+    // Phase 3: Drift fills in
+    setTimeout(() => {
+      document.getElementById('t-gap-label').style.transition = 'opacity 0.3s ease';
+      document.getElementById('t-gap-label').setAttribute('opacity', '0');
+      document.getElementById('t-gap').setAttribute('opacity', '0.2');
+
+      document.getElementById('t-drift').style.transition = 'opacity 0.8s ease 0.3s';
+      document.getElementById('t-drift').setAttribute('opacity', '1');
+
+      const insight = document.getElementById('t-insight');
+      insight.textContent = 'The familiar fills the vacuum before anyone notices the gap existed.';
+      insight.style.transition = 'opacity 0.6s ease 0.5s';
+      insight.setAttribute('opacity', '0.5');
+
+      document.getElementById('t-toggle').style.transition = 'opacity 0.5s ease 0.8s';
+      document.getElementById('t-toggle').setAttribute('opacity', '1');
+    }, 4500);
+  }
+
+  // Toggle
+  document.getElementById('t-toggle').addEventListener('click', () => {
+    showDesigned = !showDesigned;
+    const drift = document.getElementById('t-drift');
+    const designed = document.getElementById('t-designed');
+    const gap = document.getElementById('t-gap');
+    const insight = document.getElementById('t-insight');
+    const toggleText = document.getElementById('t-toggle-text');
+
+    if (showDesigned) {
+      drift.style.transition = 'opacity 0.4s ease';
+      drift.setAttribute('opacity', '0');
+      gap.setAttribute('opacity', '0');
+      setTimeout(() => {
+        designed.style.transition = 'opacity 0.5s ease';
+        designed.setAttribute('opacity', '1');
+      }, 200);
+      insight.textContent = 'The redesign has to be ready before the task finishes. The window closes in minutes.';
+      toggleText.textContent = '← WITHOUT';
+    } else {
+      designed.style.transition = 'opacity 0.4s ease';
+      designed.setAttribute('opacity', '0');
+      gap.setAttribute('opacity', '0.2');
+      setTimeout(() => {
+        drift.style.transition = 'opacity 0.5s ease';
+        drift.setAttribute('opacity', '1');
+      }, 200);
+      insight.textContent = 'The familiar fills the vacuum before anyone notices the gap existed.';
+      toggleText.textContent = 'WITH DESIGN →';
+    }
+  });
+
+  const obs = new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) runEntrance();
+  }, { threshold: 0.2 });
+  obs.observe(container);
+})();
+
+
+// ═══════════════════════════════════════════════════
+// ANIMATION 5: FRICTION SPECTRUM
+// ═══════════════════════════════════════════════════
+(function() {
+  const container = document.getElementById('anim-friction');
+
+  // Create particles
+  const pG = document.getElementById('friction-particles');
+
+  // Low friction particles
+  const lowPath = "M300,95 Q420,88 540,95 Q640,102 720,95";
+  for (let i = 0; i < 5; i++) {
+    const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    c.setAttribute('r', '4'); c.setAttribute('fill', '#007B5F');
+    const am = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');
+    am.setAttribute('dur', '2.5s'); am.setAttribute('repeatCount', 'indefinite');
+    am.setAttribute('begin', `${i * 0.5}s`); am.setAttribute('path', lowPath);
+    c.appendChild(am);
+    const an = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+    an.setAttribute('attributeName', 'opacity'); an.setAttribute('values', '0;0.7;0.7;0');
+    an.setAttribute('dur', '2.5s'); an.setAttribute('repeatCount', 'indefinite');
+    an.setAttribute('begin', `${i * 0.5}s`);
+    c.appendChild(an);
+    pG.appendChild(c);
+  }
+
+  // Medium friction particles
+  const medPath = "M300,193 Q340,170 385,198 Q430,226 475,180 Q520,152 570,202 Q620,226 670,184 Q700,170 720,193";
+  for (let i = 0; i < 3; i++) {
+    const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    c.setAttribute('r', '4'); c.setAttribute('fill', '#C4A07C');
+    const am = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');
+    am.setAttribute('dur', '3.5s'); am.setAttribute('repeatCount', 'indefinite');
+    am.setAttribute('begin', `${i * 1.15}s`); am.setAttribute('path', medPath);
+    c.appendChild(am);
+    const an = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+    an.setAttribute('attributeName', 'opacity'); an.setAttribute('values', '0;0.7;0.7;0');
+    an.setAttribute('dur', '3.5s'); an.setAttribute('repeatCount', 'indefinite');
+    an.setAttribute('begin', `${i * 1.15}s`);
+    c.appendChild(an);
+    pG.appendChild(c);
+  }
+
+  // High friction particle (dies)
+  const highPath = "M300,291 Q320,265 345,300 Q365,330 390,278 Q410,250 435,306 Q455,332 480,278 Q500,250 525,298 Q545,325 570,280 Q590,260 615,295 Q635,320 660,282 Q680,265 705,292 Q715,288 720,291";
+  const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  c.setAttribute('r', '4'); c.setAttribute('fill', '#C45B4A');
+  const am = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');
+  am.setAttribute('dur', '5s'); am.setAttribute('repeatCount', 'indefinite');
+  am.setAttribute('path', highPath);
+  am.setAttribute('keyPoints', '0;0.5;0.5');
+  am.setAttribute('keyTimes', '0;0.55;1');
+  am.setAttribute('calcMode', 'linear');
+  c.appendChild(am);
+  const an = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+  an.setAttribute('attributeName', 'opacity');
+  an.setAttribute('values', '0;0.7;0.7;0;0;0');
+  an.setAttribute('keyTimes', '0;0.08;0.4;0.55;0.8;1');
+  an.setAttribute('dur', '5s'); an.setAttribute('repeatCount', 'indefinite');
+  c.appendChild(an);
+  pG.appendChild(c);
+
+  const obs = new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) {
+      setTimeout(() => {
+        document.getElementById('friction-columns').setAttribute('opacity', '1');
+        document.getElementById('friction-columns').style.transition = 'opacity 0.5s ease';
+      }, 200);
+      setTimeout(() => {
+        document.getElementById('friction-low').style.transition = 'opacity 0.6s ease';
+        document.getElementById('friction-low').setAttribute('opacity', '1');
+        document.getElementById('friction-path-low').style.transition = 'stroke-dashoffset 1.2s ease 0.5s';
+        document.getElementById('friction-path-low').setAttribute('stroke-dashoffset', '0');
+      }, 300);
+      // Low annotation after path draws
+      setTimeout(() => {
+        document.getElementById('friction-anno-low').style.transition = 'opacity 0.5s ease';
+        document.getElementById('friction-anno-low').setAttribute('opacity', '0.8');
+      }, 1800);
+      setTimeout(() => {
+        document.getElementById('friction-med').style.transition = 'opacity 0.6s ease';
+        document.getElementById('friction-med').setAttribute('opacity', '1');
+        document.getElementById('friction-path-med').style.transition = 'stroke-dashoffset 1.2s ease 0.5s';
+        document.getElementById('friction-path-med').setAttribute('stroke-dashoffset', '0');
+      }, 600);
+      // Med annotation
+      setTimeout(() => {
+        document.getElementById('friction-anno-med').style.transition = 'opacity 0.5s ease';
+        document.getElementById('friction-anno-med').setAttribute('opacity', '0.8');
+      }, 2200);
+      setTimeout(() => {
+        document.getElementById('friction-high').style.transition = 'opacity 0.6s ease';
+        document.getElementById('friction-high').setAttribute('opacity', '1');
+        document.getElementById('friction-path-high').style.transition = 'stroke-dashoffset 1.2s ease 0.5s';
+        document.getElementById('friction-path-high').setAttribute('stroke-dashoffset', '0');
+      }, 900);
+      // High annotation
+      setTimeout(() => {
+        document.getElementById('friction-anno-high').style.transition = 'opacity 0.5s ease';
+        document.getElementById('friction-anno-high').setAttribute('opacity', '0.8');
+      }, 2600);
+    }
+  }, { threshold: 0.2 });
+  obs.observe(container);
+})();
+
+
+// ═══════════════════════════════════════════════════
+// RESOLUTION VISUALIZATION (Shallow vs Deep Metrics)
+// ═══════════════════════════════════════════════════
+(function() {
+  const NS = 'http://www.w3.org/2000/svg';
+  const container = document.getElementById('anim-resolution');
+  const svg = document.getElementById('resolution-svg');
+
+  // ── Build low-res grid (3x3 big green blocks, centered at x=175) ──
+  const loresG = document.getElementById('lores-grid');
+  const gridW = 210, gridH = 165;
+  const loStartX = 175 - gridW / 2; // 70
+  const loStartY = 65;
+  const loCells = [];
+  for (let r = 0; r < 3; r++) {
+    for (let c = 0; c < 3; c++) {
+      const rect = document.createElementNS(NS, 'rect');
+      rect.setAttribute('x', loStartX + c * 72);
+      rect.setAttribute('y', loStartY + r * 56);
+      rect.setAttribute('width', '66');
+      rect.setAttribute('height', '50');
+      rect.setAttribute('rx', '4');
+      rect.setAttribute('fill', '#5BA67B');
+      rect.setAttribute('opacity', String(0.3 + (Math.sin(r * 2 + c) * 0.06)));
+      loresG.appendChild(rect);
+      loCells.push(rect);
+    }
+  }
+
+  // ── Build high-res grid (10x9 cells, centered at x=580) ──
+  const hiresG = document.getElementById('hires-grid');
+  const cols = 10, rows = 9;
+  const cellW = 22, cellH = 22;
+  const hiGridW = cols * cellW;
+  const hiStartX = 580 - hiGridW / 2; // 470
+  const hiStartY = 65;
+
+  const colorMap = [
+    ['t','t','t','t','t','c','t','t','t','t'],
+    ['t','t','c','t','t','t','t','c','t','t'],
+    ['t','c','t','t','t','t','c','t','t','t'],
+    ['c','c','t','c','r','c','c','t','c','c'],
+    ['c','r','c','c','c','r','c','c','r','c'],
+    ['r','c','c','r','c','c','r','c','c','r'],
+    ['r','r','c','r','r','r','r','r','c','r'],
+    ['r','r','r','r','c','r','r','r','r','r'],
+    ['r','r','r','r','r','r','r','r','r','c'],
+  ];
+
+  const colors = { t: '#007B5F', c: '#C4A07C', r: '#C45B4A' };
+  const opacs = { t: 0.55, c: 0.45, r: 0.4 };
+
+  const hiCells = [];
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      const key = colorMap[row][col];
+      const rect = document.createElementNS(NS, 'rect');
+      rect.setAttribute('x', hiStartX + col * cellW);
+      rect.setAttribute('y', hiStartY + row * cellH);
+      rect.setAttribute('width', cellW - 2);
+      rect.setAttribute('height', cellH - 2);
+      rect.setAttribute('rx', '2');
+      rect.setAttribute('fill', colors[key]);
+      rect.setAttribute('opacity', String(opacs[key]));
+      hiresG.appendChild(rect);
+      hiCells.push(rect);
+    }
+  }
+
+  // ── Scroll-triggered staggered reveal ──
+  const obs = new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) {
+      // Low-res grid
+      setTimeout(() => {
+        loresG.style.transition = 'opacity 0.6s ease';
+        loresG.setAttribute('opacity', '1');
+      }, 300);
+
+      // Low-res labels
+      setTimeout(() => {
+        document.getElementById('lores-pct').style.transition = 'opacity 0.5s ease';
+        document.getElementById('lores-pct').setAttribute('opacity', '0.85');
+        document.getElementById('lores-sub1').style.transition = 'opacity 0.5s ease 0.1s';
+        document.getElementById('lores-sub1').setAttribute('opacity', '0.6');
+        document.getElementById('lores-sub2').style.transition = 'opacity 0.5s ease 0.2s';
+        document.getElementById('lores-sub2').setAttribute('opacity', '0.6');
+      }, 700);
+
+      // Divider arrow
+      setTimeout(() => {
+        document.getElementById('res-arrow').style.transition = 'opacity 0.5s ease';
+        document.getElementById('res-arrow').setAttribute('opacity', '1');
+      }, 1200);
+
+      // High-res grid: staggered cell reveal
+      setTimeout(() => {
+        hiresG.setAttribute('opacity', '1');
+        hiCells.forEach((cell, i) => {
+          const row = Math.floor(i / cols);
+          const col = i % cols;
+          const delay = (row * 30 + col * 25);
+          cell.setAttribute('opacity', '0');
+          setTimeout(() => {
+            cell.style.transition = 'opacity 0.3s ease';
+            const key = colorMap[row][col];
+            cell.setAttribute('opacity', String(opacs[key]));
+          }, delay);
+        });
+      }, 1500);
+
+      // Role labels + legend
+      setTimeout(() => {
+        document.getElementById('res-legend').style.transition = 'opacity 0.5s ease';
+        document.getElementById('res-legend').setAttribute('opacity', '1');
+        document.getElementById('res-roles').style.transition = 'opacity 0.5s ease';
+        document.getElementById('res-roles').setAttribute('opacity', '1');
+        document.getElementById('res-sub').style.transition = 'opacity 0.5s ease';
+        document.getElementById('res-sub').setAttribute('opacity', '0.6');
+      }, 2200);
+
+      // Insight
+      setTimeout(() => {
+        document.getElementById('res-insight').style.transition = 'opacity 0.8s ease';
+        document.getElementById('res-insight').setAttribute('opacity', '0.5');
+      }, 2800);
+    }
+  }, { threshold: 0.25 });
+  obs.observe(container);
+})();
+
+
+// ═══════════════════════════════════════════════════
+// ANIMATION 6: DIVERGING FUTURES
+// ═══════════════════════════════════════════════════
+(function() {
+  const container = document.getElementById('anim-futures');
+
+  const obs = new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) {
+      setTimeout(() => {
+        document.getElementById('futures-start').setAttribute('opacity', '0.4');
+        document.getElementById('futures-start-label').setAttribute('opacity', '0.55');
+        document.getElementById('futures-waves').style.transition = 'opacity 0.6s ease';
+        document.getElementById('futures-waves').setAttribute('opacity', '1');
+      }, 300);
+
+      setTimeout(() => {
+        const up = document.getElementById('futures-up');
+        up.setAttribute('opacity', '0.65');
+        up.style.transition = 'stroke-dashoffset 2s ease, opacity 0.6s ease';
+        up.setAttribute('stroke-dashoffset', '0');
+      }, 600);
+
+      setTimeout(() => {
+        const down = document.getElementById('futures-down');
+        down.setAttribute('opacity', '0.45');
+        down.style.transition = 'stroke-dashoffset 2s ease, opacity 0.6s ease';
+        down.setAttribute('stroke-dashoffset', '0');
+      }, 900);
+
+      setTimeout(() => {
+        document.getElementById('futures-legend-top').style.transition = 'opacity 0.8s ease';
+        document.getElementById('futures-legend-top').setAttribute('opacity', '1');
+      }, 1500);
+
+      setTimeout(() => {
+        document.getElementById('futures-legend-bot').style.transition = 'opacity 0.8s ease';
+        document.getElementById('futures-legend-bot').setAttribute('opacity', '1');
+      }, 1800);
+
+      setTimeout(() => {
+        document.getElementById('futures-lockout').style.transition = 'opacity 0.6s ease';
+        document.getElementById('futures-lockout').setAttribute('opacity', '0.2');
+        document.getElementById('futures-lockout-label').style.transition = 'opacity 0.6s ease';
+        document.getElementById('futures-lockout-label').setAttribute('opacity', '0.55');
+      }, 2200);
+
+      setTimeout(() => {
+        document.getElementById('futures-gap').style.transition = 'opacity 0.8s ease';
+        document.getElementById('futures-gap').setAttribute('opacity', '0.5');
+      }, 2600);
+
+      setTimeout(() => {
+        document.getElementById('futures-insight').style.transition = 'opacity 0.8s ease';
+        document.getElementById('futures-insight').setAttribute('opacity', '0.45');
+      }, 3000);
+    }
+  }, { threshold: 0.3 });
+  obs.observe(container);
+})();
+
+</script>
+</body>
+</html>
